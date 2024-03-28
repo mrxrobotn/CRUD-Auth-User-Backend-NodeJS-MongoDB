@@ -1,11 +1,10 @@
-import { addUser, getUsers, updateUser, deleteUser, getUserById, getUserByEmail, signup, login, getLoggedUser } from "../controllers/user.js";
+import { getUsers, updateUser, deleteUser, getUserById, getUserByEmail, signup, login, getLoggedUser } from "../controllers/user.js";
 import express from "express";
 import verifyToken from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.route("/")
-  .post(addUser)
   .get(getUsers);
 
 router.route("/:email")

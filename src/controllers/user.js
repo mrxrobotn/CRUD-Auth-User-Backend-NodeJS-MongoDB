@@ -24,9 +24,9 @@ export async function login(req, res) {
 
 export async function signup(req, res) {
   try {
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role, phone } = req.body;
     const hashedPassword = await argon2.hash(password, {type: argon2.argon2i});
-    const user = await User.create({ username, email, password: hashedPassword, role });
+    const user = await User.create({ username, email, password: hashedPassword, role, phone });
     res.status(201).json({ message: 'User registered successfully', user });
   } catch (err) {
     res.status(500).json({ message: 'Error registering user', error: err.message });
@@ -35,16 +35,6 @@ export async function signup(req, res) {
 
 export function getLoggedUser(req, res) {
   res.json({ user: req.user });
-}
-
-export function addUser(req, res) {
-    User.create(req.body)
-      .then(() => {
-        res.status(200).json({ message: "User successfully added" });
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err });
-      });
 }
 
 export function getUserByEmail(req, res) {

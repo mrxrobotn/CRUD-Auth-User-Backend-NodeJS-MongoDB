@@ -21,6 +21,10 @@ const userSchema = new Schema(
       enum: ['admin', 'parent', 'student'],
       required: true,
     },
+    phone: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,

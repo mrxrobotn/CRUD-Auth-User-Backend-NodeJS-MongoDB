@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 
 // Middleware to verify JWT token
 export default function verifyToken(req, res, next) {
-  const authHeader = req.headers['authorization']; // Extract the Authorization header
+  const authHeader = req.headers['authorization'];
   if (!authHeader) {
     return res.status(403).json({ message: 'Authorization header is required' });
   }
-  const token = authHeader.split(' ')[1]; // Extract the token part from "Bearer <token>"
+  const token = authHeader.split(' ')[1];
   if (!token) {
     return res.status(403).json({ message: 'Token is missing' });
   }
@@ -14,7 +14,7 @@ export default function verifyToken(req, res, next) {
     if (err) {
       return res.status(401).json({ message: 'Invalid token' });
     }
-    req.user = decoded; // Save decoded user data to the request object
-    next(); // Proceed to the next middleware or route handler
+    req.user = decoded;
+    next();
   });
 }
