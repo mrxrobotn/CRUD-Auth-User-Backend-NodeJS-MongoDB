@@ -1,4 +1,4 @@
 NODE_ENV=dev
 PORT=3000
-DB_URL_ATLAS=
-JWT_SECRET=
+DB_URL_ATLAS="Enter you MongoDB Cluster url here"
+JWT_SECRET="Enter you JWT secret key"
